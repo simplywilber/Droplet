@@ -9,9 +9,9 @@ function Footer() {
         <p>|</p>
       </div>
       <div id="footer-links">
-        <Link class="link">Home</Link>
-        <Link class="link">Fortunes</Link>
-        <Link class="link">About</Link>
+        <Link className="link">Home</Link>
+        <Link className="link">Fortunes</Link>
+        <Link className="link">About</Link>
         <p>|</p>
       </div>
       <div>

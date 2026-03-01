@@ -30,7 +30,7 @@ body {
   padding-right: 1em;
 }
 
-.nav-links :link:hover {
+.nav-links a:hover {
   transform: scale(1.05);
 }
 

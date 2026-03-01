@@ -1,6 +1,6 @@
 function Home() {
     const date = new Date();
-    const hour = date.getHours;
+    const hour = date.getHours();
     let greeting;
 
     if (hour >= 5 && hour < 12) {
