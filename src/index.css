@@ -7,16 +7,17 @@ body {
 
 #logo {
   font-size: 4.5em;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.15s ease-in-out;
 }
 
 #logo:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .link {
   text-decoration: none;
+  transition: transform 0.15s ease-in-out;
   color: black;
 }
 
@@ -28,8 +29,7 @@ body {
 }
 
 .nav-links :link:hover {
-  transition: transform 0.2s ease-in-out;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 #nav-bar {
