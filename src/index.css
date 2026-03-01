@@ -1,0 +1,23 @@
+body {
+    padding: .5em;
+}
+
+#logo {
+    text-decoration: none;
+    color: black;
+    font-size: 4.5em;
+}
+
+.nav-links {
+font-size: 1.6em;
+display: flex;
+gap: 1.5em;
+padding-right: 1em;
+}
+
+#nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
