@@ -41,7 +41,7 @@ body {
 .nav-links {
   font-size: 1.2em;
   display: flex;
-  gap: 4em;
+  gap: 2em;
   padding-right: 1em;
   align-items: center;
 }
@@ -59,7 +59,7 @@ body {
 
 #logout-btn {
   padding: 8px 10px;
-  border-radius: 15px;
+  border-radius: 8px;
   background-color: #cce1ef;
 }
 
