@@ -3,11 +3,11 @@
 Under construction
 
 
-## Topic Uno
+## Roadmap
 
 More lorem ipsum
 
-## Topic Dos
+## Contribution and Roles
 
 Lorem ipsum
 
@@ -41,3 +41,8 @@ Hover Color
 
 Navigation Bar Background Color:
 #9dc9e9
+
+## Known limitations and bugs
+
+## Fixes
+
