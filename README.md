@@ -7,11 +7,17 @@ Under construction
 
 Inital commit
 
-Create Authentication page and configrue Google Firebase
+[ X ] Create Authentication page and create Google Firebase project
 
-Create Home page and configure Weather/Quote API
+[ X ] Configure Firebase secret keys and configs
 
-Create Quotes page and implement CRUD functionality
+[ O ] Update Home page and configure Weather/Quote API
+
+[   ] Update Quotes page and implement CRUD functionality
+
+[   ] Update About page and add external links
+
+[   ] Deploy Website
 
 ## Contribution and Roles
 
