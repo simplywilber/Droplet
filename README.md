@@ -44,5 +44,6 @@ Navigation Bar Background Color:
 
 ## Known limitations and bugs
 
-## Fixes
+## Proposed fixes/Changes
+Create loading screen
 
