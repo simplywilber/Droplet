@@ -4,13 +4,13 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer id="footer">
-      <Link class="link">Droplet</Link>
+      <Link className="link">Droplet</Link>
       <div>
         <p>|</p>
       </div>
       <div id="footer-links">
         <Link className="link">Home</Link>
-        <Link className="link">Fortunes</Link>
+        <Link className="link">Qoutes</Link>
         <Link className="link">About</Link>
         <p>|</p>
       </div>

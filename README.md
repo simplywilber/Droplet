@@ -5,7 +5,13 @@ Under construction
 
 ## Roadmap
 
-More lorem ipsum
+Inital commit
+
+Create Authentication page and configrue Google Firebase
+
+Create Home page and configure Weather/Quote API
+
+Create Quotes page and implement CRUD functionality
 
 ## Contribution and Roles
 

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Fortunes from "./pages/Fortunes";
+import Quotes from "./pages/Quotes"
 import About from "./pages/About";
 import AuthForm from "./components/AuthForm";
 import { auth } from "./firebase";
@@ -34,7 +34,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/fortunes" element={<Fortunes />} />
+            <Route path="/quotes" element={<Quotes />} />
             <Route path="/about" element={<About />} />
           </Routes>
           <Footer />

@@ -18,12 +18,12 @@ function Navbar() {
           Droplet
         </Link>
       </div>
-      <div class="nav-links">
+      <div className="nav-links">
         <Link className="link" to="/">
           Home
         </Link>
-        <Link className="link" to="/fortunes">
-          Fortunes
+        <Link className="link" to="/quotes">
+          Quotes
         </Link>
         <Link className="link" to="/about">
           About
