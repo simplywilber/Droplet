@@ -10,6 +10,7 @@ body {
 #logo {
   font-size: 4.2em;
   transition: transform 0.15s ease-in-out;
+  font-family: "Bagel Fat One", system-ui;
 }
 
 #logo:hover {
