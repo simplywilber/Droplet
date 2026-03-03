@@ -25,7 +25,7 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div id="loading-text"><p>Loading...</p></div>;
 
   return (
     <>
