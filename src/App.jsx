@@ -11,7 +11,8 @@ import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // to avoid flash of routes
+  // to avoid flash of routes
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     // Listen for auth state changes
@@ -24,7 +25,7 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  if (loading) return <p>Loading...</p>; // optional loading state
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>

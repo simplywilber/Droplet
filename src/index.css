@@ -31,7 +31,7 @@ body {
 
 #logo-text:hover {
   cursor: pointer;
-  color: #E8F5FD;
+  color: #e8f5fd;
 }
 
 #logo:hover {
@@ -54,18 +54,18 @@ body {
 
 .link:hover {
   transform: scale(1.05);
-  color: #E8F5FD;
+  color: #e8f5fd;
 }
 
 #logout-btn {
   padding: 8px 10px;
   border-radius: 15px;
   background-color: #cce1ef;
- }
+}
 
- #logout-btn:hover {
-    background-color: #1b5b7e;
- }
+#logout-btn:hover {
+  background-color: #1b5b7e;
+}
 
 #footer {
   display: flex;
@@ -87,4 +87,86 @@ body {
   /* TEMP HEIGHT, REMOVE AFTER TEST */
   height: 625px;
   padding: 0 25px;
+}
+
+/* Authentication Form */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#auth-deck-logo {
+  display: flex;
+  height: 550px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b5b7e;
+  font-family: "Bagel Fat One", system-ui;
+  color: #e8f5fd;
+  font-size: 2.2em;
+}
+
+#auth-deck-form {
+  display: flex;
+  height: 550px;
+  width: 500px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  background-color: #a9d4f2;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.auth-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-btn {
+  border: none;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  color: #075e8e;
+  font-size: 1em;
+}
+
+.auth-form-btn:hover {
+  color: #e8f5fd;
+  cursor: pointer;
+}
+
+input {
+  text-align: start;
+  width: 19em;
+  height: 2.5em;
+  padding: 0.4em;
+  border-radius: 5px;
+  border: #075e8e solid 1px;
+}
+
+#auth-form button {
+  background-color: #075e8e;
+  color: #e8f5fd;
+  width: 20em;
+  height: 2.8em;
+  padding: 0.5em;
+  border-radius: 8px;
+  border: #075e8e solid .5px;
+  cursor: pointer;
+}
+
+#auth-form button:hover {
+  background-color: #cce1ef;
+  color: #075e8e;
 }

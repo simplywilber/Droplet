@@ -11,6 +11,23 @@ More lorem ipsum
 
 Lorem ipsum
 
+## Tpography
+
+Logo Font:
+Bagel Fat One
+https://fonts.google.com/specimen/Bagel+Fat+One
+
+Body/standard Font:
+M PLUS 1
+https://fonts.google.com/specimen/M+PLUS+1
+
+Font Hierarchy:
+H1: 2.2em - 4.4em
+H2/H3: 1em - 2em
+Body Text: 1em
+Labels: .2em
+
+
 ## Color Palette
 
 #E8F5FD
