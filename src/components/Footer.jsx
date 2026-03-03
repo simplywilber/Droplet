@@ -14,9 +14,7 @@ function Footer() {
         <Link className="link">About</Link>
         <p>|</p>
       </div>
-      <div>
-        &#169; {currentYear}
-      </div>
+      <div>&#169; {currentYear}</div>
     </footer>
   );
 }

@@ -1,4 +1,5 @@
 function Home() {
+    // Dyanmic grreting for UX
     const date = new Date();
     const hour = date.getHours();
     let greeting;

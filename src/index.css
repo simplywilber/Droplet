@@ -1,38 +1,51 @@
 /* Universal */
 body {
-  padding: 0.5em;
+  padding-left: 25px;
+  padding-right: 25px;
   margin: 0;
   display: flex;
   flex-direction: column;
   font-family: "M PLUS 1", sans-serif;
+  background-color: #cce1ef;
+}
+
+#logo-text {
+  font-size: 4.4em;
+  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+  font-family: "Bagel Fat One", system-ui;
+  color: #1b5b7e;
 }
 
 #logo {
-  font-size: 4.2em;
   transition: transform 0.15s ease-in-out;
-  font-family: "Bagel Fat One", system-ui;
+}
+
+#logo-text:hover {
+  cursor: pointer;
+  color: #86a8c1;
 }
 
 #logo:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+    transform: scale(1.05);
+
 }
 
 .link {
   text-decoration: none;
   transition: transform 0.15s ease-in-out;
-  color: black;
+  color: #1b5b7e;
 }
 
 .nav-links {
-  font-size: 1.45em;
+  font-size: 1.3em;
   display: flex;
-  gap: 1.5em;
+  gap: 3.5em;
   padding-right: 1em;
 }
 
-.nav-links a:hover {
+.link:hover {
   transform: scale(1.05);
+  color: #86a8c1;
 }
 
 #nav-bar {
@@ -41,13 +54,14 @@ body {
   justify-content: space-between;
   margin-bottom: 50px;
 }
+
 #footer {
   display: flex;
   align-items: center;
   gap: 5em;
 }
 
-#footer-links{
+#footer-links {
   display: flex;
   gap: 5em;
   align-items: center;
