@@ -20,4 +20,7 @@ Lorem ipsum
 #1B5B7E
 
 Hover Color
-#86a8c1
+#cee4f5
+
+Navigation Bar Background Color:
+#9dc9e9

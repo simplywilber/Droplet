@@ -1,7 +1,5 @@
 /* Universal */
 body {
-  padding-left: 25px;
-  padding-right: 25px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -9,9 +7,20 @@ body {
   background-color: #cce1ef;
 }
 
+#nav-bar {
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  background-color: #9dc9e9;
+}
+
 #logo-text {
   font-size: 4.4em;
-  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition:
+    transform 0.15s ease-in-out,
+    color 0.15s ease-in-out;
   font-family: "Bagel Fat One", system-ui;
   color: #1b5b7e;
 }
@@ -22,12 +31,18 @@ body {
 
 #logo-text:hover {
   cursor: pointer;
-  color: #86a8c1;
+  color: #cee4f5;
 }
 
 #logo:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
 
+.nav-links {
+  font-size: 1.2em;
+  display: flex;
+  gap: 4em;
+  padding-right: 1em;
 }
 
 .link {
@@ -36,29 +51,17 @@ body {
   color: #1b5b7e;
 }
 
-.nav-links {
-  font-size: 1.3em;
-  display: flex;
-  gap: 3.5em;
-  padding-right: 1em;
-}
-
 .link:hover {
   transform: scale(1.05);
-  color: #86a8c1;
-}
-
-#nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
+  color: #cee4f5;
 }
 
 #footer {
   display: flex;
   align-items: center;
+  padding: 10px 25px;
   gap: 5em;
+  background-color: #9dc9e9;
 }
 
 #footer-links {
@@ -71,5 +74,6 @@ body {
 #container-home {
   display: flex;
   /* TEMP HEIGHT, REMOVE AFTER TEST */
-  height: 600px;
+  height: 625px;
+  padding: 0 25px;
 }
