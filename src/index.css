@@ -5,6 +5,7 @@ body {
   flex-direction: column;
   font-family: "M PLUS 1", sans-serif;
   background-color: #cce1ef;
+  color: #092f43;
 }
 
 #nav-bar {
@@ -39,7 +40,7 @@ body {
 }
 
 .nav-links {
-  font-size: 1.2em;
+  font-size: 1.05em;
   display: flex;
   gap: 2em;
   padding-right: 1em;
@@ -58,9 +59,10 @@ body {
 }
 
 #logout-btn {
-  padding: 8px 10px;
+  padding: 5px 10px;
   border-radius: 8px;
   background-color: #cce1ef;
+  border: #075e8e solid .8px;
 }
 
 #logout-btn:hover {

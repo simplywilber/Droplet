@@ -14,7 +14,7 @@ function Footer() {
         <Link className="link">About</Link>
         <p>|</p>
       </div>
-      <div>&#169; {currentYear}</div>
+      <div>Wilber Amaya-Maurisio and Christian Velez &#169; {currentYear}</div>
     </footer>
   );
 }

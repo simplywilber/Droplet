@@ -35,6 +35,7 @@ Labels: .2em
 #9BC0DA
 #689EC2
 #1B5B7E
+#092f43
 
 # Hover Color
 #cee4f5
