@@ -16,7 +16,7 @@ export default function AuthForm({ setUser }) {
     setError("");
 
     if (!email || !password) {
-      setError("Please fill out all required fields.");
+      setError("Please fill out all required fields");
       return;
     }
 

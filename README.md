@@ -36,11 +36,14 @@ Labels: .2em
 #689EC2
 #1B5B7E
 
-Hover Color
+# Hover Color
 #cee4f5
 
-Navigation Bar Background Color:
+# Navigation Bar Background Color:
 #9dc9e9
+
+# Authentication Form H1:
+#114a68
 
 ## Known limitations and bugs
 

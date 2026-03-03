@@ -81,6 +81,15 @@ body {
   align-items: center;
 }
 
+input {
+  text-align: start;
+  width: 19em;
+  height: 2.5em;
+  padding: 0.4em;
+  border-radius: 5px;
+  border: #075e8e solid 1px;
+}
+
 /* Home Page */
 #container-home {
   display: flex;
@@ -139,20 +148,11 @@ body {
   outline: none;
   color: #075e8e;
   font-size: 1em;
-}
+  }
 
 .auth-form-btn:hover {
   color: #e8f5fd;
   cursor: pointer;
-}
-
-input {
-  text-align: start;
-  width: 19em;
-  height: 2.5em;
-  padding: 0.4em;
-  border-radius: 5px;
-  border: #075e8e solid 1px;
 }
 
 #auth-form button {
@@ -164,9 +164,18 @@ input {
   border-radius: 8px;
   border: #075e8e solid .5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 #auth-form button:hover {
   background-color: #cce1ef;
   color: #075e8e;
+}
+
+#auth-form h1 {
+  color: #114a68;
+}
+
+.error {
+  color: #ed1616;
 }
