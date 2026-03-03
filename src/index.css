@@ -31,7 +31,7 @@ body {
 
 #logo-text:hover {
   cursor: pointer;
-  color: #cee4f5;
+  color: #E8F5FD;
 }
 
 #logo:hover {
@@ -43,6 +43,7 @@ body {
   display: flex;
   gap: 4em;
   padding-right: 1em;
+  align-items: center;
 }
 
 .link {
@@ -53,8 +54,18 @@ body {
 
 .link:hover {
   transform: scale(1.05);
-  color: #cee4f5;
+  color: #E8F5FD;
 }
+
+#logout-btn {
+  padding: 8px 10px;
+  border-radius: 15px;
+  background-color: #cce1ef;
+ }
+
+ #logout-btn:hover {
+    background-color: #1b5b7e;
+ }
 
 #footer {
   display: flex;
