@@ -58,6 +58,12 @@ body {
   color: #e8f5fd;
 }
 
+.user-email {
+  font-weight: bold;
+  color: #1b5b7e;
+  font-size: 0.9em;
+}
+
 #logout-btn {
   padding: 5px 10px;
   border-radius: 8px;
@@ -188,4 +194,227 @@ input {
 
 .error {
   color: #ed1616;
+}
+
+/* Quotes Page - Enhanced */
+.quotes-container {
+  padding: 20px 20px 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.qotd-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  background-color: #1b5b7e;
+  padding: 40px 20px;
+  border-radius: 20px;
+  color: #e8f5fd;
+}
+
+.qotd-section h1 {
+  color: #e8f5fd;
+  margin-top: 0;
+}
+
+.qotd-card {
+  max-width: 800px;
+  width: 100%;
+  background-color: #e8f5fd;
+  color: #092f43;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.quotes-nav {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 40px;
+}
+
+.quotes-nav button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #1b5b7e;
+  background: transparent;
+  color: #1b5b7e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quotes-nav button.active, .quotes-nav button:hover {
+  background-color: #1b5b7e;
+  color: #e8f5fd;
+}
+
+.list-management {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.list-management input {
+  width: 250px;
+}
+
+.list-management button {
+  padding: 0 20px;
+  background-color: #075e8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.list-group {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #9dc9e9;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.list-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.rename-list-btn {
+  padding: 5px 15px;
+  background-color: transparent;
+  color: #1b5b7e;
+  border: 1px solid #1b5b7e;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.rename-list-btn:hover {
+  background-color: #1b5b7e;
+  color: white;
+}
+
+.delete-list-btn {
+  padding: 5px 15px;
+  background-color: transparent;
+  color: #ed1616;
+  border: 1px solid #ed1616;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.delete-list-btn:hover {
+  background-color: #ed1616;
+  color: white;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.quote-actions select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #9dc9e9;
+  background: white;
+  color: #092f43;
+}
+
+.quote-actions button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ed1616;
+  background: transparent;
+  color: #ed1616;
+  cursor: pointer;
+}
+
+.quote-actions button:hover {
+  background: #ed1616;
+  color: white;
+}
+
+.quote-notes {
+  margin-top: 15px;
+}
+
+.quote-notes textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #9dc9e9;
+  background: #f0f8ff;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.9em;
+  box-sizing: border-box;
+}
+
+.quote-notes textarea:focus {
+  outline: none;
+  border-color: #1b5b7e;
+  background: white;
+}
+
+.browse-section, .saved-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.single-quote-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.new-quote-btn {
+  padding: 12px 30px;
+  background-color: #1b5b7e;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.new-quote-btn:hover {
+  background-color: #075e8e;
 }

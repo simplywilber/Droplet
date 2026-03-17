@@ -1,5 +1,5 @@
 function Home() {
-    // Dyanmic grreting for UX
+    // Dynamic greeting for UX
     const date = new Date();
     const hour = date.getHours();
     let greeting;
@@ -19,7 +19,7 @@ function Home() {
         <h1>{greeting}</h1>
       </div>
       <div id="weather-img">
-        <img></img>
+        <img alt="Weather icon" />
       </div>
     </div>
   );
