@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useWeather } from "../context/WeatherContext";
 
 const US_STATES = [
   "AL",
@@ -54,8 +55,7 @@ const US_STATES = [
 ];
 
 function Forecast() {
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("WA");
+  const { city, setCity, state, setState, coords, setCoords, clearCoords } = useWeather();
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -88,12 +88,17 @@ function Forecast() {
 
   // Fetch 5-day forecast (free API)
   const fetchForecast = async () => {
-    const coords = await fetchCoords();
-    if (!coords) return;
+    let currentCoords = coords;
+    
+    if (!currentCoords) {
+      currentCoords = await fetchCoords();
+      if (!currentCoords) return;
+      clearCoords(); // Just to be consistent, though fetchCoords is city-based
+    }
 
     try {
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&units=imperial&appid=${API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${currentCoords.lat}&lon=${currentCoords.lon}&units=imperial&appid=${API_KEY}`,
       );
 
       const data = await res.json();
@@ -113,6 +118,17 @@ function Forecast() {
     }
   };
 
+  const handleFetchForecast = async () => {
+    clearCoords();
+    await fetchForecast();
+  };
+
+  useEffect(() => {
+    if (coords || (city && state)) {
+      fetchForecast();
+    }
+  }, []);
+
   // Use geolocation
   const handleUseMyLocation = () => {
     if (!navigator.geolocation) {
@@ -127,6 +143,7 @@ function Forecast() {
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
+          setCoords({ lat: latitude, lon: longitude });
 
           const res = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`,
@@ -137,6 +154,7 @@ function Forecast() {
 
           if (!data.list) throw new Error("Invalid forecast data");
 
+          setCity(data.city.name);
           const dailyData = data.list.filter((_, index) => index % 8 === 0);
 
           setForecast(dailyData.slice(0, 5));
@@ -175,7 +193,7 @@ function Forecast() {
   placeholder="City"
   value={city}
   onChange={(e) => setCity(e.target.value)}
-  onKeyDown={(e) => e.key === "Enter"}
+  onKeyDown={(e) => e.key === "Enter" && handleFetchForecast()}
 />
 
         <select value={state} onChange={(e) => setState(e.target.value)}>
@@ -186,7 +204,7 @@ function Forecast() {
           ))}
         </select>
 
-        <button onClick={fetchForecast}>Search</button>
+        <button onClick={handleFetchForecast}>Search</button>
         <button onClick={handleUseMyLocation}>Use My Location</button>
       </div>
 

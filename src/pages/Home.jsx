@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useWeather } from "../context/WeatherContext";
 
 const US_STATES = [
   "AL",
@@ -65,6 +66,7 @@ const WEATHER_BG = {
 };
 
 function Home() {
+  const { city, setCity, state, setState, coords, setCoords, clearCoords } = useWeather();
   const date = new Date();
   const hour = date.getHours();
   let greeting =
@@ -77,8 +79,6 @@ function Home() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("WA");
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -94,6 +94,7 @@ function Home() {
       if (data.cod !== 200) throw new Error(data.message);
       setWeather(data);
       setCity(data.name);
+      setCoords({ lat, lon });
     } catch (err) {
       console.error(err);
       setError("Unable to retrieve weather. Please try again.");
@@ -113,6 +114,7 @@ function Home() {
     try {
       setLoading(true);
       setError("");
+      clearCoords();
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${API_KEY}`,
       );
@@ -127,6 +129,14 @@ function Home() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (coords) {
+      fetchByCoords(coords.lat, coords.lon);
+    } else if (city && state) {
+      fetchByCityState();
+    }
+  }, []); // Run once on mount
 
   // Use my location
   const handleUseMyLocation = () => {
