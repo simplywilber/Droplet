@@ -311,6 +311,7 @@ input {
   display: flex;
   gap: 1em;
   margin-bottom: 40px;
+  justify-content: center;
 }
 
 .quotes-nav button {
@@ -416,6 +417,7 @@ input {
   gap: 10px;
   margin-top: 15px;
   align-items: center;
+  justify-content: center;
 }
 
 .quote-actions select {
@@ -435,6 +437,7 @@ input {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-width: 200px;
 }
 
 .quote-actions button:hover {
@@ -492,6 +495,7 @@ input {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: none;
+  min-width: 200px;
 }
 
 .new-quote-btn:hover {
