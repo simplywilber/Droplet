@@ -22,7 +22,7 @@ Visit: https://dropletweatherprediction.netlify.app/
 ---
 
 ## Contribution and Roles
- A
+
 - **Wilber:**
 Created initial project wireframes and helped with the overall project design
 
@@ -34,7 +34,14 @@ Added “Use My Location” geolocation feature and umbrella/coat recommendation
 
 Designed and styled responsive weather card layout with error handling for invalid inputs
 
-- **Christian Velez:** [ Add Christian's contributions here ]
+- **Christian Velez:**
+Developed the Quotes page, including quote saving and note taking features.
+
+Adjusted for Zenquotes' free tier API calls which require caching/storing.
+
+Set up responsive layout at breakpoints for desktop, tablet, and mobile viewports.
+
+General testing and adjusting of site behaviors.
 
 ---
 
