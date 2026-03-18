@@ -109,9 +109,74 @@ input {
 /* Home Page */
 #container-home {
   display: flex;
-  /* TEMP HEIGHT, REMOVE AFTER TEST */
-  height: 625px;
-  padding: 0 25px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 25px;
+  transition: background 0.5s ease;
+}
+
+/* Weather container/card */
+#weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 20px 30px;
+  color: #fff;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Weather inputs and select */
+#weather-container input,
+#weather-container select {
+  margin: 5px;
+  width: 120px;
+  height: 2.5em;
+  border-radius: 8px;
+  border: 1px solid #075e8e;
+  padding: 0.3em 0.5em;
+  text-align: start;
+  font-family: inherit;
+}
+
+/* Buttons inside weather container */
+#weather-container button {
+  margin: 5px;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: 1px solid #075e8e;
+  background-color: #1b5b7e;
+  color: #e8f5fd;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#weather-container button:hover {
+  background-color: #cce1ef;
+  color: #075e8e;
+}
+
+/* Weather icon */
+#weather-img img {
+  width: 120px;
+  height: 120px;
+  margin-top: 15px;
+}
+
+/* Error message */
+#weather-container p.error {
+  color: #ed1616;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 /* Authentication Form */
