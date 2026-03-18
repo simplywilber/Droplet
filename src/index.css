@@ -58,6 +58,12 @@ body {
   color: #e8f5fd;
 }
 
+.user-email {
+  font-weight: bold;
+  color: #1b5b7e;
+  font-size: 0.9em;
+}
+
 #logout-btn {
   padding: 5px 10px;
   border-radius: 8px;
@@ -188,4 +194,373 @@ input {
 
 .error {
   color: #ed1616;
+}
+
+/* Quotes Page - Enhanced */
+.quotes-container {
+  padding: 20px 20px 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.qotd-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  background-color: #1b5b7e;
+  padding: 40px 20px;
+  border-radius: 20px;
+  color: #e8f5fd;
+}
+
+.qotd-section h1 {
+  color: #e8f5fd;
+  margin-top: 0;
+}
+
+.qotd-section .quote-actions button, .qotd-section .new-quote-btn {
+  border-color: #cce1ef;
+  color: #cce1ef;
+}
+
+.qotd-section .quote-actions button:hover, .qotd-section .new-quote-btn:hover {
+  background-color: #cce1ef;
+  color: #1b5b7e;
+}
+
+.qotd-card {
+  max-width: 800px;
+  width: 100%;
+  background-color: #e8f5fd;
+  color: #092f43;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.quotes-nav {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 40px;
+}
+
+.quotes-nav button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #1b5b7e;
+  background: transparent;
+  color: #1b5b7e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quotes-nav button:hover {
+  background-color: #075e8e;
+  color: white;
+  border-color: #075e8e;
+}
+
+.list-management {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.list-management input {
+  width: 250px;
+}
+
+.list-management button {
+  padding: 0 20px;
+  background-color: #075e8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.list-group {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #9dc9e9;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.list-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.rename-list-btn {
+  padding: 5px 15px;
+  background-color: transparent;
+  color: #1b5b7e;
+  border: 1px solid #1b5b7e;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.rename-list-btn:hover {
+  background-color: #1b5b7e;
+  color: white;
+}
+
+.delete-list-btn {
+  padding: 5px 15px;
+  background-color: transparent;
+  color: #ed1616;
+  border: 1px solid #ed1616;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.delete-list-btn:hover {
+  background-color: #ed1616;
+  color: white;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.quote-actions select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #9dc9e9;
+  background: white;
+  color: #092f43;
+}
+
+.quote-actions button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #1b5b7e;
+  background: transparent;
+  color: #1b5b7e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quote-actions button:hover {
+  background-color: #075e8e;
+  color: white;
+  border-color: #075e8e;
+}
+
+.quote-notes {
+  margin-top: 15px;
+}
+
+.quote-notes textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #9dc9e9;
+  background: #f0f8ff;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.9em;
+  box-sizing: border-box;
+}
+
+.quote-notes textarea:focus {
+  outline: none;
+  border-color: #1b5b7e;
+  background: white;
+}
+
+.browse-section, .saved-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.single-quote-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.new-quote-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #1b5b7e;
+  background: transparent;
+  color: #1b5b7e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.new-quote-btn:hover {
+  background-color: #075e8e;
+  color: white;
+  border-color: #075e8e;
+}
+
+/* --- Responsive Layout --- */
+
+/* Desktop & Large Tablets (up to 1024px) */
+@media (max-width: 1024px) {
+  .auth-container {
+    flex-direction: row;
+    padding: 40px;
+    align-items: stretch;
+  }
+  #auth-deck-logo {
+    width: 40%;
+    height: auto;
+    border-radius: 20px 0 0 20px;
+  }
+  #auth-deck-form {
+    width: 60%;
+    height: auto;
+    border-radius: 0 20px 20px 0;
+  }
+}
+
+/* Tablet (up to 768px) */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+  #auth-deck-logo {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.8em;
+  }
+  #auth-deck-form {
+    width: 100%;
+    height: auto;
+    padding: 40px 0;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  #nav-bar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  #logo-text {
+    font-size: 3.5em;
+  }
+  .nav-links {
+    padding-right: 0;
+    gap: 1.5em;
+  }
+  #footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  #footer-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .quotes-container {
+    padding: 20px 10px;
+  }
+  .qotd-section {
+    padding: 30px 15px;
+  }
+  .list-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+/* Mobile (up to 480px, accommodates 320px) */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 10px;
+  }
+  #auth-deck-logo {
+    display: none; /* Hide entirely on small screens */
+  }
+  #auth-deck-form {
+    border-radius: 15px;
+    padding: 30px 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  #logo-text {
+    font-size: 2.5em;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quotes-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  .quotes-nav button {
+    width: 100%;
+  }
+  .list-management {
+    flex-direction: column;
+  }
+  .list-management input, .list-management button {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    height: 3em;
+  }
+  .quote-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .quote-actions select, .quote-actions button, .new-quote-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  #auth-form button {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
