@@ -612,6 +612,96 @@ input {
   margin-top: 20px;
 }
 
+/* About Page */
+.about-container {
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  color: #092f43;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-header h1, .about-header h2 {
+  color: #1b5b7e;
+  font-size: 2.5em;
+  margin-top: 0;
+}
+
+.about-header p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.team-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-section h2 {
+  color: #1b5b7e;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.team-cards {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  background-color: #1b5b7e;
+  color: #e8f5fd;
+  padding: 30px;
+  border-radius: 20px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.8em;
+  color: #e8f5fd;
+}
+
+.team-card .role {
+  color: #9dc9e9;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+}
+
+.team-card .bio {
+  line-height: 1.5;
+  font-size: 1em;
+}
+
 /* --- Responsive Layout --- */
 
 /* Desktop & Large Tablets (up to 1024px) */
