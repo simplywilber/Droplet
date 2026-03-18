@@ -10,13 +10,13 @@ Visit: https://dropletweatherprediction.netlify.app/
 
 - [X] Create Authentication page and configure Google Firebase project  
 - [X] Configure Firebase secret keys and configs  
-- [O] Update Home page and integrate Weather API with:  
+- [X] Update Home page and integrate Weather API with:  
   - City + state search  
   - “Use My Location” geolocation  
   - Dynamic backgrounds based on weather  
   - Error handling for invalid input  
-- [ ] Update Quotes page and implement CRUD functionality  
-- [ ] Update About page and add external links  
+- [X] Update Quotes page and implement CRUD functionality  
+- [O] Update About page and add external links  
 - [ ] Deploy Website  
 
 ---
