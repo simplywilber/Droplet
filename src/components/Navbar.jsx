@@ -18,7 +18,12 @@ function Navbar() {
     <header>
       <nav id="nav-bar" aria-label="Main Navigation">
         <div id="logo">
-          <Link className="link" id="logo-text" to="/" aria-label="Droplet Home">
+          <Link
+            className="link"
+            id="logo-text"
+            to="/"
+            aria-label="Droplet Home"
+          >
             Droplet
           </Link>
         </div>
@@ -29,11 +34,25 @@ function Navbar() {
           <Link className="link" to="/quotes">
             Quotes
           </Link>
+          <Link className="link" to="/forecast">
+            Forecast
+          </Link>
           <Link className="link" to="/about">
             About
           </Link>
-          {user && <span className="user-email" aria-label="Logged in user email">{user.email}</span>}
-          <button onClick={handleLogout} className="link" id="logout-btn" aria-label="Logout">Logout</button>
+          {user && (
+            <span className="user-email" aria-label="Logged in user email">
+              {user.email}
+            </span>
+          )}
+          <button
+            onClick={handleLogout}
+            className="link"
+            id="logout-btn"
+            aria-label="Logout"
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </header>

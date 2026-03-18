@@ -131,7 +131,13 @@ input {
   max-width: 400px;
   width: 90%;
   margin-bottom: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#weather-section {
+  display: flex;
+  flex-direction: row;
+  gap: 13em;
 }
 
 /* Weather inputs and select */
@@ -166,9 +172,9 @@ input {
 }
 
 /* Weather icon */
-#weather-img img {
-  width: 120px;
-  height: 120px;
+#weather-img {
+  width: 400px;
+  height: 400px;
   margin-top: 15px;
 }
 
@@ -283,7 +289,7 @@ input {
   max-width: 500px;
   width: 90%;
   margin-bottom: 40px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .qotd-section h1 {
@@ -309,12 +315,14 @@ input {
   color: #9dc9e9;
 }
 
-.qotd-section .quote-actions button, .qotd-section .new-quote-btn {
+.qotd-section .quote-actions button,
+.qotd-section .new-quote-btn {
   border-color: #cce1ef;
   color: #cce1ef;
 }
 
-.qotd-section .quote-actions button:hover, .qotd-section .new-quote-btn:hover {
+.qotd-section .quote-actions button:hover,
+.qotd-section .new-quote-btn:hover {
   background-color: #cce1ef;
   color: #1b5b7e;
 }
@@ -325,7 +333,7 @@ input {
   background-color: #e8f5fd;
   color: #092f43;
   border: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .quotes-nav {
@@ -491,7 +499,8 @@ input {
   background: white;
 }
 
-.browse-section, .saved-section {
+.browse-section,
+.saved-section {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -524,6 +533,25 @@ input {
   background-color: #075e8e;
   color: white;
   border-color: #075e8e;
+}
+
+/* Forecast Page */
+.forecast-card {
+  flex: 1 0 120px;
+  background: #e8f5fd;
+  color: #092f43;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#flex-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 /* --- Responsive Layout --- */
@@ -565,7 +593,7 @@ input {
     padding: 40px 0;
     border-radius: 0 0 20px 20px;
   }
-  
+
   #nav-bar {
     flex-direction: column;
     padding: 15px;
@@ -611,9 +639,9 @@ input {
   #auth-deck-form {
     border-radius: 15px;
     padding: 30px 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
-  
+
   #logo-text {
     font-size: 2.5em;
   }
@@ -631,7 +659,8 @@ input {
   .list-management {
     flex-direction: column;
   }
-  .list-management input, .list-management button {
+  .list-management input,
+  .list-management button {
     width: 100%;
     max-width: none;
     box-sizing: border-box;
@@ -641,7 +670,9 @@ input {
     flex-direction: column;
     align-items: stretch;
   }
-  .quote-actions select, .quote-actions button, .new-quote-btn {
+  .quote-actions select,
+  .quote-actions button,
+  .new-quote-btn {
     width: 100%;
     box-sizing: border-box;
   }
