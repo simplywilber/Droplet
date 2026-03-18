@@ -7,7 +7,7 @@ function Footer() {
       <Link className="link" to="/">
         Droplet
       </Link>
-      <div>
+      <div className="footer-separator">
         <p aria-hidden="true">|</p>
       </div>
       <nav id="footer-links" aria-label="Footer Navigation">
@@ -24,7 +24,7 @@ function Footer() {
         <Link className="link" to="/about">
           About
         </Link>
-        <p aria-hidden="true">|</p>
+        <p className="footer-separator" aria-hidden="true">|</p>
       </nav>
       <div>Wilber Amaya-Maurisio and Christian Velez &#169; {currentYear}</div>
     </footer>
