@@ -179,9 +179,9 @@ function Home() {
     const condition = weather.weather[0].main;
     if (condition === "Rain" || condition === "Thunderstorm")
       return "Don't forget your umbrella! ☔";
-    if (condition === "Snow") return "Bundle up, it's snowing! ❄️";
-    if (condition === "Clear") return "Sunny day! 🌞";
-    if (condition === "Clouds") return "Might want a light jacket. ☁️";
+    if (condition === "Snow") return "Bundle up, it's snowing!";
+    if (condition === "Clear") return "Sunny day!";
+    if (condition === "Clouds") return "Might want a light jacket.";
     return "Check the weather before heading out!";
   };
 
