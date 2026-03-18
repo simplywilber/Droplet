@@ -22,8 +22,18 @@ Visit: https://dropletweatherprediction.netlify.app/
 ---
 
 ## Contribution and Roles
+ A
+- **Wilber:**
+Created initial project wireframes and helped with the overall project design
 
-- **Wilber:** [ Add Wilber's contributions here ]
+Developed the login/register feature for user authentication with Firebase, including the logout functionality
+
+Integrated Home page weather display with OpenWeather API, including dynamic backgrounds based on current conditions
+
+Added “Use My Location” geolocation feature and umbrella/coat recommendation label
+
+Designed and styled responsive weather card layout with error handling for invalid inputs
+
 - **Christian Velez:** [ Add Christian's contributions here ]
 
 ---
