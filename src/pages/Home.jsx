@@ -64,18 +64,6 @@ const WEATHER_BG = {
   Haze: "linear-gradient(to bottom, #f0f2f0, #000c40)",
 };
 
-// Images corresponding to weather
-const WEATHER_IMAGE = {
-  Rain: "/images/umbrella-icon.png",
-  Drizzle: "/images/umbrella-icon.png",
-  Thunderstorm: "/images/umbrella-icon.png",
-  Snow: "/images/snow.png",
-  Clear: "/images/sun.png",
-  Clouds: "/images/clouds.png",
-  Mist: "/images/mist.png",
-  Haze: "/images/haze.png",
-};
-
 function Home() {
   const date = new Date();
   const hour = date.getHours();
@@ -94,6 +82,7 @@ function Home() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
+  // Fetch weather by coordinates
   const fetchByCoords = async (lat, lon) => {
     try {
       setLoading(true);
@@ -114,6 +103,7 @@ function Home() {
     }
   };
 
+  // Fetch weather by city + state
   const fetchByCityState = async () => {
     if (!city || !state) {
       setError("Please enter a city and select a state.");
@@ -138,15 +128,15 @@ function Home() {
     }
   };
 
+  // Use my location
   const handleUseMyLocation = () => {
     if (!navigator.geolocation) {
-      alert("Geolocation not supported by your browser.");
+      alert("Geolocation not supported.");
       return;
     }
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        fetchByCoords(position.coords.latitude, position.coords.longitude);
-      },
+      (position) =>
+        fetchByCoords(position.coords.latitude, position.coords.longitude),
       (err) => {
         console.error(err);
         setError("Unable to retrieve your location.");
@@ -163,75 +153,68 @@ function Home() {
     );
   };
 
+  // Determine image: umbrella if rain/thunderstorm
+  const getWeatherImage = () => {
+    if (!weather) return null;
+    const condition = weather.weather[0].main;
+    if (condition === "Rain" || condition === "Thunderstorm")
+      return "images/umbrella-icon.png";
+    return `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+  };
+
   return (
     <div id="container-home" style={{ background: getBackground() }}>
-      <div
-        id="weather-section"
-        className={!loading && weather ? "with-image" : "no-image"}
-      >
+    {/* Weather search bar */}
+      <div id="weather-search">
+        <input
+          type="text"
+          placeholder="City"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && fetchByCityState()}
+        />
+        <select value={state} onChange={(e) => setState(e.target.value)}>
+          {US_STATES.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+        <button onClick={fetchByCityState}>Search</button>
+        <button onClick={handleUseMyLocation}>Use My Location</button>
+      </div>
+      <div id="weather-section">
+        {/* Left: Greeting + info */}
         <div id="weather-container">
           <h1>{greeting}</h1>
-
-          {/* City + State Inputs */}
-          <div>
-            <input
-              type="text"
-              placeholder="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && fetchByCityState()}
-            />
-            <select value={state} onChange={(e) => setState(e.target.value)}>
-              {US_STATES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-            <button className="logout-btn" onClick={fetchByCityState}>
-              Search
-            </button>
-          </div>
-
-          {/* Use My Location */}
-          <div>
-            <button onClick={handleUseMyLocation}>Use My Location</button>
-          </div>
-
-          {/* Error Display */}
-          {error && <p className="error">{error}</p>}
-
-          {/* Weather Display */}
           {loading ? (
             <p>Loading weather...</p>
-          ) : weather ? (
-            <>
-              <h2>
-                {weather.name}, {weather.sys.country}
-              </h2>
-              {!loading && weather && (
-                <img
-                  alt="Weather icon"
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                />
-              )}
-              <p>Feels like {Math.round(weather.main.temp)}°F</p>
-              <p>{weather.weather[0].description}</p>
-            </>
-          ) : null}
+          ) : (
+            weather && (
+              <>
+                <h2>
+                  {weather.name}, {weather.sys.country}
+                </h2>
+                {!loading && weather && (
+                  <img
+                    alt="Weather icon"
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  />
+                )}
+                <p>Feels like {Math.round(weather.main.temp)}°F</p>
+                <p>{weather.weather[0].description}</p>
+              </>
+            )
+          )}
+          {error && <p className="error">{error}</p>}
         </div>
 
-        {/* Weather Icon */}
-        {!loading && weather && (
-          <img
-            id="weather-img"
-            alt="Weather icon"
-            src={
-              WEATHER_IMAGE[weather.weather[0].main] ||
-              `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
-            }
-          />
-        )}
+        {/* Right: Search + Image */}
+        <div id="weather-side">
+          {!loading && weather && (
+            <img id="weather-img" alt="Weather icon" src={getWeatherImage()} />
+          )}
+        </div>
       </div>
     </div>
   );

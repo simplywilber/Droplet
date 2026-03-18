@@ -132,14 +132,31 @@ input {
 
 #weather-section {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  gap: 2em;
+}
+
+#weather-side {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 15px;
+}
+
+#weather-search {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
 /* When image exists */
 #weather-section.with-image {
   flex-direction: row;
-  gap: 25em; /* reduced from 13em */
+  gap: 25em;
 }
 
 /* When NO image */
