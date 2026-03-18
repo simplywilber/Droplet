@@ -223,6 +223,16 @@ input {
   margin-top: 0;
 }
 
+.qotd-section .quote-actions button, .qotd-section .new-quote-btn {
+  border-color: #cce1ef;
+  color: #cce1ef;
+}
+
+.qotd-section .quote-actions button:hover, .qotd-section .new-quote-btn:hover {
+  background-color: #cce1ef;
+  color: #1b5b7e;
+}
+
 .qotd-card {
   max-width: 800px;
   width: 100%;
@@ -249,9 +259,10 @@ input {
   transition: all 0.2s ease;
 }
 
-.quotes-nav button.active, .quotes-nav button:hover {
-  background-color: #1b5b7e;
-  color: #e8f5fd;
+.quotes-nav button:hover {
+  background-color: #075e8e;
+  color: white;
+  border-color: #075e8e;
 }
 
 .list-management {
@@ -351,17 +362,20 @@ input {
 }
 
 .quote-actions button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #ed1616;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #1b5b7e;
   background: transparent;
-  color: #ed1616;
+  color: #1b5b7e;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .quote-actions button:hover {
-  background: #ed1616;
+  background-color: #075e8e;
   color: white;
+  border-color: #075e8e;
 }
 
 .quote-notes {
@@ -404,17 +418,119 @@ input {
 }
 
 .new-quote-btn {
-  padding: 12px 30px;
-  background-color: #1b5b7e;
-  color: white;
-  border: none;
+  padding: 10px 20px;
   border-radius: 25px;
+  border: 2px solid #1b5b7e;
+  background: transparent;
+  color: #1b5b7e;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  box-shadow: none;
 }
 
 .new-quote-btn:hover {
   background-color: #075e8e;
+  color: white;
+  border-color: #075e8e;
+}
+
+/* --- Responsive Layout --- */
+
+/* Desktop & Large Tablets (up to 1024px) */
+@media (max-width: 1024px) {
+  .auth-container {
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  #auth-deck-logo, #auth-deck-form {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    padding: 40px 0;
+  }
+}
+
+/* Tablet (up to 768px) */
+@media (max-width: 768px) {
+  #nav-bar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  #logo-text {
+    font-size: 3.5em;
+  }
+  .nav-links {
+    padding-right: 0;
+    gap: 1.5em;
+  }
+  #footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  #footer-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .quotes-container {
+    padding: 20px 10px;
+  }
+  .qotd-section {
+    padding: 30px 15px;
+  }
+  .list-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+/* Mobile (up to 480px, accommodates 320px) */
+@media (max-width: 480px) {
+  #logo-text {
+    font-size: 2.5em;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quotes-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  .quotes-nav button {
+    width: 100%;
+  }
+  .list-management {
+    flex-direction: column;
+  }
+  .list-management input, .list-management button {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    height: 3em;
+  }
+  .quote-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .quote-actions select, .quote-actions button, .new-quote-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  #auth-form button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #auth-deck-logo {
+    font-size: 1.5em;
+  }
 }

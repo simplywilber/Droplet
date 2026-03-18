@@ -17,16 +17,16 @@ function Quotes() {
         const saved = sessionStorage.getItem("droplet_current_random_quote");
         return saved ? JSON.parse(saved) : null;
     });
+    const [savedQuotes, setSavedQuotes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [showFavorites, setShowFavorites] = useState(false);
 
     useEffect(() => {
         if (currentRandomQuote) {
             sessionStorage.setItem("droplet_current_random_quote", JSON.stringify(currentRandomQuote));
         }
     }, [currentRandomQuote]);
-    const [savedQuotes, setSavedQuotes] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [showFavorites, setShowFavorites] = useState(false);
 
     useEffect(() => {
         const fetchQuotes = async () => {
@@ -189,7 +189,7 @@ function Quotes() {
                         ) : (
                             <div className="empty-random-state" style={{ textAlign: 'center', padding: '2rem' }}>
                                 <p>Ready for some inspiration?</p>
-                                <button onClick={handleNewRandomQuote} className="new-quote-btn" style={{ marginTop: '1rem', padding: '0.75rem 1.5rem', fontSize: '1rem' }}>Get a Random Quote</button>
+                                <button onClick={handleNewRandomQuote} className="new-quote-btn">Get a Random Quote</button>
                             </div>
                         )}
                     </div>
