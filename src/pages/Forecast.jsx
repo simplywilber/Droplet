@@ -204,8 +204,8 @@ function Forecast() {
           ))}
         </select>
 
-        <button onClick={handleFetchForecast}>Search</button>
-        <button onClick={handleUseMyLocation}>Use My Location</button>
+        <button onClick={handleFetchForecast} className="custom-btn-forecast">Search</button>
+        <button onClick={handleUseMyLocation} className="custom-btn-forecast">Use My Location</button>
       </div>
 
       {/* Status */}

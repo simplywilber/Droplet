@@ -75,6 +75,19 @@ body {
   color: #cce1ef;
 }
 
+.custom-btn-forecast {
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: #e8f5fd;
+  background-color: #155374;
+  border: #075e8e solid 0.8px;
+}
+
+.custom-btn-forecast:hover {
+  background-color: #5991ad;
+  color: #000000;
+}
+
 #footer {
   display: flex;
   align-items: center;
@@ -577,8 +590,8 @@ input {
 /* Forecast Page */
 .forecast-card {
   flex: 1 0 120px;
-  background: #e8f5fd;
-  color: #092f43;
+  background: #34586e;
+  color: #ebf5fa;
   border-radius: 12px;
   padding: 10px;
   text-align: center;
