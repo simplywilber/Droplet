@@ -21,11 +21,6 @@ Welcome to **Droplet**, a weather and quotes web application! Droplet lets users
 
 ## Contribution and Roles
 
-Currently, development is led by **Wil**, with plans to open contributions for:  
-- Frontend enhancements  
-- API integration  
-- Styling and animations  
-- Bug fixes and accessibility improvements  
 
 ---
 
