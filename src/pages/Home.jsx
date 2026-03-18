@@ -1,56 +1,10 @@
 import { useState } from "react";
 
 const US_STATES = [
-  "AL",
-  "AK",
-  "AZ",
-  "AR",
-  "CA",
-  "CO",
-  "CT",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "ID",
-  "IL",
-  "IN",
-  "IA",
-  "KS",
-  "KY",
-  "LA",
-  "ME",
-  "MD",
-  "MA",
-  "MI",
-  "MN",
-  "MS",
-  "MO",
-  "MT",
-  "NE",
-  "NV",
-  "NH",
-  "NJ",
-  "NM",
-  "NY",
-  "NC",
-  "ND",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VT",
-  "VA",
-  "WA",
-  "WV",
-  "WI",
-  "WY",
+  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN",
+  "IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH",
+  "NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT",
+  "VT","VA","WA","WV","WI","WY",
 ];
 
 // Map weather conditions to background gradients
@@ -65,13 +19,11 @@ const WEATHER_BG = {
 };
 
 function Home() {
-  // Time-based greeting
   const date = new Date();
   const hour = date.getHours();
-  let greeting;
-  if (hour >= 5 && hour < 12) greeting = "Good Morning,";
-  else if (hour >= 12 && hour < 18) greeting = "Good Afternoon,";
-  else greeting = "Good Evening,";
+  let greeting = hour >= 5 && hour < 12 ? "Good Morning," :
+                 hour >= 12 && hour < 18 ? "Good Afternoon," :
+                 "Good Evening,";
 
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -81,19 +33,17 @@ function Home() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-  // Fetch weather by coordinates
   const fetchByCoords = async (lat, lon) => {
     try {
       setLoading(true);
       setError("");
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`
       );
       const data = await res.json();
       if (data.cod !== 200) throw new Error(data.message);
       setWeather(data);
       setCity(data.name);
-      setState(data.sys.country === "US" ? data.state || "WA" : "");
     } catch (err) {
       console.error(err);
       setError("Unable to retrieve weather. Please try again.");
@@ -103,20 +53,17 @@ function Home() {
     }
   };
 
-  // Fetch weather by city + state
   const fetchByCityState = async () => {
     if (!city || !state) {
       setError("Please enter a city and select a state.");
       return;
     }
-
     const query = `${city},${state},US`;
-
     try {
       setLoading(true);
       setError("");
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${API_KEY}`
       );
       const data = await res.json();
       if (data.cod !== 200) throw new Error(data.message);
@@ -130,7 +77,6 @@ function Home() {
     }
   };
 
-  // Use my location button
   const handleUseMyLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation not supported by your browser.");
@@ -144,23 +90,25 @@ function Home() {
         console.error(err);
         setError("Unable to retrieve your location.");
         setLoading(false);
-      },
+      }
     );
   };
 
-  // Determine background based on weather
   const getBackground = () => {
-    if (!weather) return "linear-gradient(to bottom, #56CCF2, #2F80ED)";
+    if (!weather) return "linear-gradient(to bottom, #78b3c7, #4098cb)";
     const condition = weather.weather[0].main;
-    return (
-      WEATHER_BG[condition] || "linear-gradient(to bottom, #56CCF2, #2F80ED)"
-    );
+    return WEATHER_BG[condition] || "linear-gradient(to bottom, #56CCF2, #2F80ED)";
   };
 
   return (
-    <div id="container-home" style={{ background: getBackground() }}>
-      <div id="weather-section">
-        {" "}
+    <div
+      id="container-home"
+      style={{ background: getBackground() }}
+    >
+      <div
+        id="weather-section"
+        className={!loading && weather ? "with-image" : "no-image"}
+      >
         <div id="weather-container">
           <h1>{greeting}</h1>
 
@@ -171,21 +119,18 @@ function Home() {
               placeholder="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && fetchByCityState()}
             />
             <select value={state} onChange={(e) => setState(e.target.value)}>
               {US_STATES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
+                <option key={s} value={s}>{s}</option>
               ))}
             </select>
-            <button className="logout-btn" onClick={fetchByCityState}>
-              Search
-            </button>
+            <button className="logout-btn" onClick={fetchByCityState}>Search</button>
           </div>
 
           {/* Use My Location */}
-          <div style={{ marginTop: "10px" }}>
+          <div>
             <button onClick={handleUseMyLocation}>Use My Location</button>
           </div>
 
@@ -197,15 +142,14 @@ function Home() {
             <p>Loading weather...</p>
           ) : weather ? (
             <>
-              <h2>
-                {weather.name}, {weather.sys.country}
-              </h2>
-              <p>{Math.round(weather.main.temp)}°F</p>
+              <h2>{weather.name}, {weather.sys.country}</h2>
+              <p>Feels like {Math.round(weather.main.temp)}°F</p>
               <p>{weather.weather[0].description}</p>
             </>
           ) : null}
         </div>
-        <div></div>
+
+        {/* Weather Icon */}
         {!loading && weather && (
           <img
             id="weather-img"

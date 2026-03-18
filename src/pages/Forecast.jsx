@@ -170,12 +170,13 @@ function Forecast() {
 
       {/* Inputs */}
       <div style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
-        <input
-          type="text"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
+<input
+  type="text"
+  placeholder="City"
+  value={city}
+  onChange={(e) => setCity(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter"}
+/>
 
         <select value={state} onChange={(e) => setState(e.target.value)}>
           {US_STATES.map((s) => (
