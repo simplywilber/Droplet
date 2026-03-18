@@ -57,7 +57,7 @@ const US_STATES = [
 // Map weather conditions to background gradients
 const WEATHER_BG = {
   Clear: "linear-gradient(to bottom, #56CCF2, #2F80ED)",
-  Clouds: "linear-gradient(to bottom, #bdc3c7, #2c3e50)",
+  Clouds: "linear-gradient(to bottom, #586166, #2c3d4f)",
   Rain: "linear-gradient(to bottom, #4b79a1, #283e51)",
   Thunderstorm: "linear-gradient(to bottom, #2c3e50, #000000)",
   Snow: "linear-gradient(to bottom, #83a4d4, #b6fbff)",
