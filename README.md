@@ -2,6 +2,8 @@
 
 Welcome to **Droplet**, a weather and quotes web application! Droplet lets users view current weather for any U.S. city, get daily quotes, and personalize their experience with dynamic backgrounds.
 
+Visit: https://dropletweatherprediction.netlify.app/
+
 ---
 
 ## Roadmap
