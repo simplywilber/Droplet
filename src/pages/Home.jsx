@@ -191,7 +191,7 @@ function Home() {
           ))}
         </select>
         <button onClick={fetchByCityState} className="custom-btn" id="search-btn">Search</button>
-        <button onClick={handleUseMyLocation} className="custom-btn"><img src="/images/location-vector.svg" id="location-icon"></img></button>
+        <button onClick={handleUseMyLocation} className="custom-btn"><img src="../images/location-vector.svg" id="location-icon"></img></button>
       </div>
       <div id="weather-section">
         {/* Left: Greeting + info */}
