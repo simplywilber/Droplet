@@ -763,6 +763,9 @@ input {
     flex-wrap: wrap;
     justify-content: center;
   }
+  .footer-separator {
+    display: none;
+  }
   .quotes-container {
     padding: 20px 10px;
   }
