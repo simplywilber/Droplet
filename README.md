@@ -1,6 +1,6 @@
 # Droplet
 
-Under construction
+Welcome to Droplet a weather and quotes app!
 
 
 ## Roadmap
