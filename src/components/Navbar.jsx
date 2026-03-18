@@ -48,7 +48,7 @@ function Navbar() {
           <button
             onClick={handleLogout}
             className="link"
-            id="logout-btn"
+            class="custom-btn"
             aria-label="Logout"
           >
             Logout
