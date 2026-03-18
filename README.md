@@ -16,13 +16,25 @@ Visit: https://dropletweatherprediction.netlify.app/
   - Dynamic backgrounds based on weather  
   - Error handling for invalid input  
 - [X] Update Quotes page and implement CRUD functionality  
-- [O] Update About page and add external links  
-- [ ] Deploy Website  
+- [X] Update About page and add external links  
+- [X] Deploy Website  
 
 ---
 
 ## Contribution and Roles
 
+- **Wilber:** [ Add Wilber's contributions here ]
+- **Christian Velez:** [ Add Christian's contributions here ]
+
+---
+
+## Technologies Used
+
+- **Frontend Framework:** React 19 (via Vite)
+- **Routing:** React Router v7
+- **Database & Auth:** Firebase (Firestore & Authentication)
+- **External APIs:** OpenWeather API, ZenQuotes API
+- **Styling:** Vanilla CSS (Flexbox, Responsive Media Queries)
 
 ---
 
@@ -64,11 +76,19 @@ M PLUS 1
 ## Features
 
 - Dynamic greeting based on time of day (Good Morning / Afternoon / Evening)  
-- Weather display for city + state with current temperature, conditions, and icon  
+- Weather display for city + state with current temperature, conditions, and icon
+- 5-Day forecast outlook with intuitive layout  
 - “Use My Location” button to fetch weather via geolocation  
-- Dynamic background gradients depending on weather (Clear, Clouds, Rain, Snow, etc.)  
+- Dynamic background gradients depending on weather (Clear, Clouds, Rain, Snow, etc.)
+- Save, Read, Update, and Delete personalized inspiration quotes via Firestore  
 - Error handling to prevent crashes for invalid inputs  
 - Fully responsive design for desktop, tablet, and mobile  
+
+---
+
+## API Documentation
+
+For detailed information on how data is fetched and structured in this application, please refer to our [API Documentation](API_DOCUMENTATION.md).
 
 ---
 
@@ -76,7 +96,6 @@ M PLUS 1
 
 - Currently only supports U.S. cities for state-based search  
 - Weather backgrounds are gradient-based only; no animated effects yet  
-- Quotes CRUD is still under development  
 
 ---
 
@@ -85,7 +104,6 @@ M PLUS 1
 - Add subtle animations for rain, snow, and clouds  
 - Expand geolocation support outside the U.S.  
 - Implement a dropdown of popular cities for quick selection  
-- Complete Quotes page CRUD functionality  
 - Improve accessibility and ARIA labels  
 
 ---
@@ -102,12 +120,12 @@ Install Dependencies
 npm install
 ```
 
-Set your OpenWeather API key
-Open Home.jsx
-Replace "YOUR_API_KEY" with your OpenWeather API key:
+Set your Environment Variables
+Create a `.env` file in the root directory of the project and add your API keys:
 
-```JS
-const API_KEY = "YOUR_API_KEY";
+```env
+VITE_WEATHER_API_KEY="your_openweather_key"
+VITE_FIREBASE_API_KEY="your_firebase_key"
 ```
 
 Start the local server
