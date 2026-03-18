@@ -66,7 +66,8 @@ const WEATHER_BG = {
 };
 
 function Home() {
-  const { city, setCity, state, setState, coords, setCoords, clearCoords } = useWeather();
+  const { city, setCity, state, setState, coords, setCoords, clearCoords } =
+    useWeather();
   const date = new Date();
   const hour = date.getHours();
   let greeting =
@@ -172,9 +173,21 @@ function Home() {
     return `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
   };
 
+  // Create a label based on the weather
+  const getWeatherRecommendation = () => {
+    if (!weather) return "";
+    const condition = weather.weather[0].main;
+    if (condition === "Rain" || condition === "Thunderstorm")
+      return "Don't forget your umbrella! ☔";
+    if (condition === "Snow") return "Bundle up, it's snowing! ❄️";
+    if (condition === "Clear") return "Sunny day! 🌞";
+    if (condition === "Clouds") return "Might want a light jacket. ☁️";
+    return "Check the weather before heading out!";
+  };
+
   return (
     <div id="container-home" style={{ background: getBackground() }}>
-    {/* Weather search bar */}
+      {/* Weather search bar */}
       <div id="weather-search">
         <input
           type="text"
@@ -190,8 +203,16 @@ function Home() {
             </option>
           ))}
         </select>
-        <button onClick={fetchByCityState} className="custom-btn" id="search-btn">Search</button>
-        <button onClick={handleUseMyLocation} className="custom-btn"><img src="../images/location-vector.svg" id="location-icon"></img></button>
+        <button
+          onClick={fetchByCityState}
+          className="custom-btn"
+          id="search-btn"
+        >
+          Search
+        </button>
+        <button onClick={handleUseMyLocation} className="custom-btn">
+          <img src="../images/location-vector.svg" id="location-icon"></img>
+        </button>
       </div>
       <div id="weather-section">
         {/* Left: Greeting + info */}
@@ -222,7 +243,14 @@ function Home() {
         {/* Right: Search + Image */}
         <div id="weather-side">
           {!loading && weather && (
-            <img id="weather-img" alt="Weather icon" src={getWeatherImage()} />
+            <>
+              <img
+                id="weather-img"
+                alt="Weather icon"
+                src={getWeatherImage()}
+              />
+              <p id="weather-recommendation">{getWeatherRecommendation()}</p>
+            </>
           )}
         </div>
       </div>
