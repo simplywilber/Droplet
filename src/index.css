@@ -272,20 +272,41 @@ input {
 }
 
 .qotd-section {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
   background-color: #1b5b7e;
-  padding: 40px 20px;
   border-radius: 20px;
+  padding: 30px 20px;
   color: #e8f5fd;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .qotd-section h1 {
   color: #e8f5fd;
   margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.8em;
+}
+
+.qotd-section .quote-card {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.qotd-section .quote-text {
+  color: #e8f5fd;
+  font-size: 1.3em;
+}
+
+.qotd-section .quote-author {
+  color: #9dc9e9;
 }
 
 .qotd-section .quote-actions button, .qotd-section .new-quote-btn {
@@ -323,6 +344,7 @@ input {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-width: 200px;
 }
 
 .quotes-nav button:hover {
