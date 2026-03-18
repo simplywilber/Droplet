@@ -55,13 +55,16 @@ function Quotes() {
             } else {
                 quoteTasks.push(
                     fetchWithTimeout("/api/today")
-                        .then(res => res.ok ? res.json() : null)
+                        .then(res => res.ok ? res.json() : Promise.reject(new Error("Failed to fetch Quote of the Day")))
                         .then(data => {
                             if (data && data[0]) {
                                 setQotd(data[0]);
                                 localStorage.setItem("droplet_qotd", JSON.stringify({ data: data[0], timestamp: now }));
                             }
-                        }).catch(() => {})
+                        }).catch((e) => {
+                            console.error("Failed to load QOTD:", e);
+                            setError("Could not load the Quote of the Day. Please try again later.");
+                        })
                 );
             }
 
@@ -71,14 +74,17 @@ function Quotes() {
             } else {
                 quoteTasks.push(
                     fetchWithTimeout("/api/quotes")
-                        .then(res => res.ok ? res.json() : null)
+                        .then(res => res.ok ? res.json() : Promise.reject(new Error("Failed to fetch quotes")))
                         .then(data => {
                             if (Array.isArray(data)) {
                                 setQuotes(data);
                                 localStorage.setItem("droplet_random_quotes", JSON.stringify({ data: data, timestamp: now }));
                                 // Do not set current random quote automatically on load
                             }
-                        }).catch(() => {})
+                        }).catch((e) => {
+                            console.error("Failed to load quotes:", e);
+                            setError("Could not load inspiration quotes. Please try again later.");
+                        })
                 );
             }
 
