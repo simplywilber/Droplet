@@ -5,24 +5,37 @@ import {
     getDocs, 
     deleteDoc, 
     doc, 
-    updateDoc
+    updateDoc,
+    setDoc
 } from "firebase/firestore";
 
 /**
  * Saves a new quote to the user's "savedQuotes" collection in Firestore.
+ * Uses a deterministic ID based on the quote content to prevent duplicates
+ * even if multiple save requests are sent simultaneously.
  * 
  * @param {string} userId - The Firebase Auth UID of the current user
  * @param {Object} quote - The quote object to save
  */
 export const saveQuote = async (userId, quote) => {
-    const savedQuotesRef = collection(db, "users", userId, "savedQuotes");
-    await addDoc(savedQuotesRef, {
-        text: quote.q || quote.text,
-        author: quote.a || quote.author,
+    const text = quote.q || quote.text;
+    const author = quote.a || quote.author;
+    
+    // Generate a deterministic hash for the quote content to use as a document ID
+    const msgBuffer = new TextEncoder().encode(`${text}-${author}`);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const quoteId = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 32);
+
+    const quoteRef = doc(db, "users", userId, "savedQuotes", quoteId);
+    
+    await setDoc(quoteRef, {
+        text,
+        author,
         notes: "",
         savedAt: Date.now(),
         listId: "Favorites" // legacy compat
-    });
+    }, { merge: true }); // Use merge to prevent overwriting existing notes if somehow called again
 };
 
 /**

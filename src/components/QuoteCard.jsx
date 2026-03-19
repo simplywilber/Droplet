@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /**
  * A reusable UI component for displaying a single quote.
@@ -15,11 +15,26 @@ import React from 'react';
  * @param {Function} props.onNewQuote - Callback to request a new random quote (only used in discovery mode)
  */
 function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySaved, onNewQuote }) {
+    const [isSaving, setIsSaving] = useState(false);
+
     // Normalize data structure: 
     // Random quotes from API usually use 'q' and 'a'
     // Saved quotes from Firestore might use 'text' and 'author' depending on legacy schema
     const text = quote.q || quote.text;
     const author = quote.a || quote.author;
+
+    const handleSave = async () => {
+        if (isSaving || isAlreadySaved) return;
+        
+        setIsSaving(true);
+        try {
+            await onSave(quote);
+        } catch (error) {
+            console.error("Failed to save quote:", error);
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
     return (
         <article className={`quote-card ${isSaved ? 'saved-card' : ''}`}>
@@ -46,11 +61,11 @@ function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySa
                     // Actions for discovery mode (Random / QOTD)
                     <>
                         <button 
-                            aria-label={isAlreadySaved ? "Already saved to favorites" : "Save to favorites"} 
-                            onClick={() => onSave(quote)} 
-                            disabled={isAlreadySaved}
+                            aria-label={isSaving ? "Saving quote" : (isAlreadySaved ? "Already saved to favorites" : "Save to favorites")} 
+                            onClick={handleSave} 
+                            disabled={isAlreadySaved || isSaving}
                         >
-                            {isAlreadySaved ? "Saved to Favorites" : "Save to Favorites"}
+                            {isSaving ? "Saving..." : (isAlreadySaved ? "Saved to Favorites" : "Save to Favorites")}
                         </button>
                         
                         {/* Only show 'New Quote' button if the callback is provided (e.g., Random Quote generator) */}
