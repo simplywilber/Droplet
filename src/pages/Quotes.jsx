@@ -70,8 +70,9 @@ function Quotes() {
 
             const quoteTasks = [];
 
-            // 1. Fetch Quote of the Day (24-hour cache limit)
-            if (cachedQotd && (now - cachedQotd.timestamp < 24 * 60 * 60 * 1000)) {
+            // 1. Fetch Quote of the Day (Calendar Day cache limit)
+            const todayKey = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            if (cachedQotd && cachedQotd.date === todayKey) {
                 setQotd(cachedQotd.data);
             } else {
                 quoteTasks.push(
@@ -80,7 +81,7 @@ function Quotes() {
                         .then(data => {
                             if (data && data[0]) {
                                 setQotd(data[0]);
-                                localStorage.setItem("droplet_qotd", JSON.stringify({ data: data[0], timestamp: now }));
+                                localStorage.setItem("droplet_qotd", JSON.stringify({ data: data[0], date: todayKey }));
                             }
                         }).catch((e) => {
                             console.error("Failed to load QOTD:", e);
