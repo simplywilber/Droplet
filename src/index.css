@@ -46,6 +46,27 @@ body {
   align-items: center;
 }
 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #1b5b7e;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
 .link {
   text-decoration: none;
   transition: transform 0.15s ease-in-out;
@@ -752,16 +773,33 @@ input {
   }
 
   #nav-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 25px;
+    position: relative;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
     flex-direction: column;
-    padding: 15px;
-    gap: 15px;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #9dc9e9;
+    padding: 20px 0;
+    gap: 1em;
+    z-index: 5;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links.open {
+    display: flex;
   }
   #logo-text {
     font-size: 3.5em;
-  }
-  .nav-links {
-    padding-right: 0;
-    gap: 1.5em;
   }
   #footer {
     flex-direction: column;
