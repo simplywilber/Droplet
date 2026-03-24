@@ -16,12 +16,22 @@ import React, { useState } from 'react';
  */
 function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySaved, onNewQuote }) {
     const [isSaving, setIsSaving] = useState(false);
+    const [isEditingNote, setIsEditingNote] = useState(false);
 
     // Normalize data structure: 
     // Random quotes from API usually use 'q' and 'a'
     // Saved quotes from Firestore might use 'text' and 'author' depending on legacy schema
     const text = quote.q || quote.text;
     const author = quote.a || quote.author;
+
+    const toggleNoteEditing = (e) => {
+        setIsEditingNote(!isEditingNote);
+        e.currentTarget.blur();
+    };
+
+    const handleNoteBlur = (e) => {
+        onUpdateNote(quote.id, e.target.value);
+    };
 
     const handleSave = async () => {
         if (isSaving || isAlreadySaved) return;
