@@ -17,6 +17,7 @@ import React, { useState } from 'react';
 function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySaved, onNewQuote }) {
     const [isSaving, setIsSaving] = useState(false);
     const [isEditingNote, setIsEditingNote] = useState(false);
+    const [localNote, setLocalNote] = useState(quote.notes || "");
 
     // Normalize data structure: 
     // Random quotes from API usually use 'q' and 'a'
@@ -24,13 +25,41 @@ function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySa
     const text = quote.q || quote.text;
     const author = quote.a || quote.author;
 
+    // Sync local state when external quote prop changes (if not currently editing)
+    React.useEffect(() => {
+        if (!isEditingNote) {
+            setLocalNote(quote.notes || "");
+        }
+    }, [quote.notes, isEditingNote]);
+
+    // Debounced "save as you type" logic
+    React.useEffect(() => {
+        // Only run debounce if user is actually editing and the content is different
+        if (!isEditingNote || localNote === (quote.notes || "")) return;
+
+        const timeoutId = setTimeout(() => {
+            onUpdateNote(quote.id, localNote);
+        }, 1000); // 1s delay before pushing to Firestore
+
+        return () => clearTimeout(timeoutId);
+    }, [localNote, isEditingNote, quote.id, quote.notes, onUpdateNote]);
+
     const toggleNoteEditing = (e) => {
+        if (isEditingNote) {
+            // About to close, save immediately to ensure final changes are captured
+            onUpdateNote(quote.id, localNote);
+        }
         setIsEditingNote(!isEditingNote);
         e.currentTarget.blur();
     };
 
-    const handleNoteBlur = (e) => {
-        onUpdateNote(quote.id, e.target.value);
+    const handleNoteBlur = () => {
+        // Immediate save on blur to guarantee persistence when clicking away
+        onUpdateNote(quote.id, localNote);
+    };
+
+    const handleNoteChange = (e) => {
+        setLocalNote(e.target.value);
     };
 
     const handleSave = async () => {
@@ -57,7 +86,8 @@ function QuoteCard({ quote, onSave, onRemove, onUpdateNote, isSaved, isAlreadySa
                     <textarea 
                         aria-label={`Personal notes for quote by ${author}`}
                         placeholder="Add personal notes..."
-                        defaultValue={quote.notes}
+                        value={localNote}
+                        onChange={handleNoteChange}
                         onBlur={handleNoteBlur}
                         autoFocus
                     />
