@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
@@ -5,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const { user } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handles user logout
   const handleLogout = async () => {
@@ -14,6 +16,11 @@ function Navbar() {
       console.error("Logout failed:", error.message);
     }
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header>
       <nav id="nav-bar" aria-label="Main Navigation">
@@ -27,17 +34,29 @@ function Navbar() {
             Droplet
           </Link>
         </div>
-        <div className="nav-links">
-          <Link className="link" to="/">
+
+        <button 
+          className="menu-toggle" 
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+          <Link className="link" to="/" onClick={() => setIsMenuOpen(false)}>
             Home
           </Link>
-          <Link className="link" to="/quotes">
+          <Link className="link" to="/quotes" onClick={() => setIsMenuOpen(false)}>
             Quotes
           </Link>
-          <Link className="link" to="/forecast">
+          <Link className="link" to="/forecast" onClick={() => setIsMenuOpen(false)}>
             Forecast
           </Link>
-          <Link className="link" to="/about">
+          <Link className="link" to="/about" onClick={() => setIsMenuOpen(false)}>
             About
           </Link>
           {user && (
@@ -46,9 +65,11 @@ function Navbar() {
             </span>
           )}
           <button
-            onClick={handleLogout}
-            className="link"
-            class="custom-btn"
+            onClick={() => {
+              handleLogout();
+              setIsMenuOpen(false);
+            }}
+            className="link custom-btn"
             aria-label="Logout"
           >
             Logout
