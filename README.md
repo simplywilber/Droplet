@@ -113,6 +113,8 @@ For detailed information on how data is fetched and structured in this applicati
 
 - Currently only supports U.S. cities for state-based search  
 - Weather backgrounds are gradient-based only; no animated effects yet  
+- Favorites note editor has no save confirmation or draft saving, only constant saving.
+- Favorites have no sorting options.
 
 ---
 
