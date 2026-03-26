@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { getCustomAuthErrorMessage } from "../services/authErrors";
 
 /**
  * Component for user authentication (Login and Registration).
@@ -52,8 +53,8 @@ export default function AuthForm({ setUser }) {
       // Successfully authenticated, update application state
       setUser(userCredential.user);
     } catch (err) {
-      // Firebase throws formatted errors that can be displayed
-      setError(err.message);
+      // Map Firebase errors to custom user-friendly messages
+      setError(getCustomAuthErrorMessage(err));
     }
   };
 
