@@ -115,6 +115,9 @@ For detailed information on how data is fetched and structured in this applicati
 - Weather backgrounds are gradient-based only; no animated effects yet  
 - Favorites note editor has no save confirmation or draft saving, only constant saving.
 - Favorites have no sorting options.
+- ZenQuotes free tier requires caching to avoid rate limiting
+- Geolocation availability depends on browser permissions and HTTPS
+- Weather API has rate limits that may affect frequent requests
 
 ---
 
@@ -145,6 +148,7 @@ Create a `.env` file in the root directory of the project and add your API keys:
 ```env
 VITE_WEATHER_API_KEY="your_openweather_key"
 VITE_FIREBASE_API_KEY="your_firebase_key"
+VITE_ZENQUOTES_API_KEY="your_zenquotes_key"
 ```
 
 Start the local server

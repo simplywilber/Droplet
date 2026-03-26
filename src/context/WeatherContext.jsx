@@ -4,7 +4,13 @@ const WeatherContext = createContext();
 
 export const useWeather = () => useContext(WeatherContext);
 
+/**
+ * WeatherProvider component that manages weather-related state across the application.
+ * Uses sessionStorage to persist user location preferences and coordinates between page refreshes,
+ * providing a better user experience by remembering their last searched location.
+ */
 export const WeatherProvider = ({ children }) => {
+  // Initialize state from sessionStorage to persist user preferences across page refreshes
   const [city, setCity] = useState(sessionStorage.getItem("weatherCity") || "");
   const [state, setState] = useState(
     sessionStorage.getItem("weatherState") || "WA",
@@ -14,7 +20,7 @@ export const WeatherProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  // Keep sessionStorage in sync
+  // Sync state changes to sessionStorage for persistence
   useEffect(() => {
     sessionStorage.setItem("weatherCity", city);
   }, [city]);
@@ -32,6 +38,22 @@ export const WeatherProvider = ({ children }) => {
   }, [coords]);
 
   const clearCoords = () => setCoords(null);
+
+  return (
+    <WeatherContext.Provider
+      value={{
+        city,
+        setCity,
+        state,
+        setState,
+        coords,
+        setCoords,
+        clearCoords,
+      }}
+    >
+      {children}
+    </WeatherContext.Provider>
+  );
 
   return (
     <WeatherContext.Provider
