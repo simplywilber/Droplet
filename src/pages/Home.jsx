@@ -54,6 +54,59 @@ const US_STATES = [
   "WY",
 ];
 
+const STATE_FULL_NAME_BY_CODE = {
+  AL: "Alabama",
+  AK: "Alaska",
+  AZ: "Arizona",
+  AR: "Arkansas",
+  CA: "California",
+  CO: "Colorado",
+  CT: "Connecticut",
+  DE: "Delaware",
+  FL: "Florida",
+  GA: "Georgia",
+  HI: "Hawaii",
+  ID: "Idaho",
+  IL: "Illinois",
+  IN: "Indiana",
+  IA: "Iowa",
+  KS: "Kansas",
+  KY: "Kentucky",
+  LA: "Louisiana",
+  ME: "Maine",
+  MD: "Maryland",
+  MA: "Massachusetts",
+  MI: "Michigan",
+  MN: "Minnesota",
+  MS: "Mississippi",
+  MO: "Missouri",
+  MT: "Montana",
+  NE: "Nebraska",
+  NV: "Nevada",
+  NH: "New Hampshire",
+  NJ: "New Jersey",
+  NM: "New Mexico",
+  NY: "New York",
+  NC: "North Carolina",
+  ND: "North Dakota",
+  OH: "Ohio",
+  OK: "Oklahoma",
+  OR: "Oregon",
+  PA: "Pennsylvania",
+  RI: "Rhode Island",
+  SC: "South Carolina",
+  SD: "South Dakota",
+  TN: "Tennessee",
+  TX: "Texas",
+  UT: "Utah",
+  VT: "Vermont",
+  VA: "Virginia",
+  WA: "Washington",
+  WV: "West Virginia",
+  WI: "Wisconsin",
+  WY: "Wyoming",
+};
+
 /**
  * Maps weather conditions to CSS background gradients for dynamic visual theming.
  * Each condition has a unique gradient that reflects the weather mood.
@@ -93,6 +146,12 @@ function Home() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
+  const buildCityStateQuery = (city, state) => {
+    const normalizedCity = city.trim();
+    const normalizedState = state.trim().toUpperCase();
+    return `${encodeURIComponent(normalizedCity)},${encodeURIComponent(normalizedState)},US`;
+  };
+
   /**
    * Fetches weather data using latitude and longitude coordinates.
    * Updates the weather state and syncs location data with the context.
@@ -118,6 +177,45 @@ function Home() {
     }
   };
 
+  const fetchCoordsByCityState = async (city, state) => {
+    const query = buildCityStateQuery(city, state);
+    const preferredState = state.trim().toUpperCase();
+    const preferredStateFullName = STATE_FULL_NAME_BY_CODE[preferredState]
+      ? STATE_FULL_NAME_BY_CODE[preferredState].toUpperCase()
+      : "";
+
+    const res = await fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`,
+    );
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error("Location not found");
+    }
+
+    const normalizedCity = city.trim().toLowerCase();
+
+    const candidates = data.filter((loc) => {
+      if (loc.country !== "US" || !loc.state) return false;
+      const locState = loc.state.trim().toUpperCase();
+      if (locState !== preferredState && locState !== preferredStateFullName) {
+        return false;
+      }
+
+      const locName = loc.name?.trim().toLowerCase();
+      const altName = loc.local_names?.en?.trim().toLowerCase();
+      return locName === normalizedCity || altName === normalizedCity;
+    });
+
+    if (candidates.length === 0) {
+      throw new Error("Location not found");
+    }
+
+    const bestMatch = candidates[0];
+
+    setCity(bestMatch.name);
+    return { lat: bestMatch.lat, lon: bestMatch.lon };
+  };
+
   /**
    * Fetches weather data using city and state search query.
    * Clears coordinates to indicate manual city search over geolocation.
@@ -127,22 +225,17 @@ function Home() {
       setError("Please enter a city and select a state.");
       return;
     }
-    const query = `${city},${state},US`;
+
     try {
       setLoading(true);
       setError("");
       clearCoords();
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=${API_KEY}`,
-      );
-      const data = await res.json();
-      if (data.cod !== 200) throw new Error(data.message);
-      setWeather(data);
+      const coords = await fetchCoordsByCityState(city, state);
+      await fetchByCoords(coords.lat, coords.lon);
     } catch (err) {
       console.error(err);
       setError("City not found. Please try again.");
       setWeather(null);
-    } finally {
       setLoading(false);
     }
   };

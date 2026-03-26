@@ -54,20 +54,4 @@ export const WeatherProvider = ({ children }) => {
       {children}
     </WeatherContext.Provider>
   );
-
-  return (
-    <WeatherContext.Provider
-      value={{
-        city,
-        setCity,
-        state,
-        setState,
-        coords,
-        setCoords,
-        clearCoords,
-      }}
-    >
-      {children}
-    </WeatherContext.Provider>
-  );
 };
