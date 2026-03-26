@@ -54,7 +54,10 @@ const US_STATES = [
   "WY",
 ];
 
-// Map weather conditions to background gradients
+/**
+ * Maps weather conditions to CSS background gradients for dynamic visual theming.
+ * Each condition has a unique gradient that reflects the weather mood.
+ */
 const WEATHER_BG = {
   Clear: "linear-gradient(to bottom, #56CCF2, #2F80ED)",
   Clouds: "linear-gradient(to bottom, #586166, #2c3d4f)",
@@ -65,9 +68,16 @@ const WEATHER_BG = {
   Haze: "linear-gradient(to bottom, #f0f2f0, #000c40)",
 };
 
+/**
+ * Home page component for weather display and search functionality.
+ * Handles weather fetching by city/state or geolocation, with dynamic backgrounds
+ * and time-based greetings.
+ */
 function Home() {
   const { city, setCity, state, setState, coords, setCoords, clearCoords } =
     useWeather();
+
+  // Calculate time-based greeting (Good Morning/Afternoon/Evening)
   const date = new Date();
   const hour = date.getHours();
   let greeting =
@@ -83,7 +93,10 @@ function Home() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-  // Fetch weather by coordinates
+  /**
+   * Fetches weather data using latitude and longitude coordinates.
+   * Updates the weather state and syncs location data with the context.
+   */
   const fetchByCoords = async (lat, lon) => {
     try {
       setLoading(true);
@@ -105,7 +118,10 @@ function Home() {
     }
   };
 
-  // Fetch weather by city + state
+  /**
+   * Fetches weather data using city and state search query.
+   * Clears coordinates to indicate manual city search over geolocation.
+   */
   const fetchByCityState = async () => {
     if (!city || !state) {
       setError("Please enter a city and select a state.");
@@ -131,6 +147,7 @@ function Home() {
     }
   };
 
+  // Initial weather fetch on component mount - prioritizes coordinates over city/state
   useEffect(() => {
     if (coords) {
       fetchByCoords(coords.lat, coords.lon);
@@ -139,7 +156,10 @@ function Home() {
     }
   }, []); // Run once on mount
 
-  // Use my location
+  /**
+   * Handles geolocation request to get user's current position.
+   * Falls back gracefully if geolocation is not supported.
+   */
   const handleUseMyLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation not supported.");
@@ -156,6 +176,10 @@ function Home() {
     );
   };
 
+  /**
+   * Determines the background gradient based on current weather conditions.
+   * Falls back to default clear sky gradient if condition is unrecognized.
+   */
   const getBackground = () => {
     if (!weather) return "linear-gradient(to bottom, #78b3c7, #4098cb)";
     const condition = weather.weather[0].main;
